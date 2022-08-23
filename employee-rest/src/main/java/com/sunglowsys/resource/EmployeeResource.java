@@ -47,7 +47,9 @@ public class EmployeeResource {
     @GetMapping("/employees/{id}")
     public ResponseEntity<Optional<Employee>> getOneEmployee(@PathVariable Long id) {
         Optional<Employee> result = employeeService.findOne (id);
-        return ResponseEntity.status (HttpStatus.OK).body (result);
+        return ResponseEntity
+                .status (HttpStatus.OK)
+                .body (result);
     }
 
     @DeleteMapping("/employees/{id}")
