@@ -4,6 +4,7 @@ import com.sunglowsys.domain.Employee;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
@@ -13,7 +14,7 @@ public interface EmployeeService {
 
     List<Employee> findAll (Pageable pageable);
 
-    Employee findOne(Long id);
+    Optional<Employee> findOne(Long id);
 
     void  delete (Long id);
 }

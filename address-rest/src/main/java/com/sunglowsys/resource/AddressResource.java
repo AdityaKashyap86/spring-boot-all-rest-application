@@ -20,28 +20,40 @@ public class AddressResource {
     }
 
     @PostMapping("/addresses")
-    public ResponseEntity<Address> createEmployee(@RequestBody Address address) {
+    public ResponseEntity<Address> creatAddress(@RequestBody Address address) {
         Address result = addressService.save (address);
-        return ResponseEntity.status (HttpStatus.OK).body (result);
+        return ResponseEntity
+                .status (HttpStatus.OK)
+                .body (result);
     }
 
     @PutMapping("/addresses/{id}")
-    public ResponseEntity<Address> updateEmployee(@RequestBody Address address) {
+    public ResponseEntity<Address> updateAddress(@RequestBody Address address) {
         Address result = addressService.update (address);
-        return ResponseEntity.status (HttpStatus.OK).body (result);
+        return ResponseEntity
+                .status (HttpStatus.OK)
+                .body (result);
     }
 
     @GetMapping("/addresses")
     public ResponseEntity<Page<Address>> getAllAddresses() {
         Page<Address> result = addressService.findAll (PageRequest.of (0,3));
-        return ResponseEntity.status (HttpStatus.OK).body (result);
+        return ResponseEntity
+                .status (HttpStatus.OK)
+                .body (result);
     }
 
     @GetMapping("/addresses/{id}")
-    public ResponseEntity<Address> getById(@PathVariable Long id) {
+    public ResponseEntity<Address> getOneAddress(@PathVariable Long id) {
         Address result = addressService.findOne(id).get ();
-        return ResponseEntity.ok ().body (result);
+        return ResponseEntity
+                .ok ()
+                .body (result);
     }
 
-    //public ResponseEntity<Address> deleteAddress
+    @DeleteMapping("/hotels/{id}")
+    private ResponseEntity<Void> deleteOneAddress(@PathVariable Long id) {
+        addressService.delete (id);
+        return ResponseEntity.ok ().build ();
+    }
 }

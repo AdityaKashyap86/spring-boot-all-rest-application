@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,8 +38,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findOne(Long id) {
-        return employeeRespository.findById (id).get ();
+    public Optional<Employee> findOne(Long id) {
+        return employeeRespository.findById (id);
     }
 
 
